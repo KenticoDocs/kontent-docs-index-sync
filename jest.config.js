@@ -3,5 +3,8 @@ module.exports = {
     testEnvironment: 'node',
     roots: [
         "./"
+    ],
+    modulePathIgnorePatterns: [
+        "dist"
     ]
 };
