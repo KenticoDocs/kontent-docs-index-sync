@@ -16,5 +16,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/kcd-sanitize-content/index.js"
+  "scriptFile": "../dist/kcd-index-sync/index.js"
 }
