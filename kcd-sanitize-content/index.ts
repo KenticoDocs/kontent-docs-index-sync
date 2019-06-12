@@ -9,7 +9,7 @@ const httpTrigger: AzureFunction = async (context: Context, req: HttpRequest): P
     try {
         if (req.body.content) {
             context.res = {
-                body: sanitizeContent(req.body.content),
+                body: JSON.stringify(sanitizeContent(req.body.content)),
             };
         } else {
             context.res = {
