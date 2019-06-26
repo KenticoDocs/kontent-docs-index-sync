@@ -22,6 +22,7 @@ export const syncAlgoliaRecords = async (blob: IBlob, sanitizedRecords: IRecord[
 
 const getRecordsById = async (id: string): Promise<IRecord[]> => {
     const response = await getSearchIndex().search<IRecord>({
+        distinct: 0,
         filters: `id:${id}`,
     });
 
