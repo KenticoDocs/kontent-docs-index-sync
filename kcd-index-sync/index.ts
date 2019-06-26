@@ -14,14 +14,14 @@ import { getBlobContainerName } from '../utils/getBlobContainerName';
 import { sanitizeRecords } from '../utils/sanitizeRecords';
 
 export const eventGridTrigger: AzureFunction =
-    async (context: Context, eventGridEvent: any): Promise<void> => {
+    async (context: Context, eventGridEvent: IEventGridEvent): Promise<void> => {
         try {
-            const container = getBlobContainerName(eventGridEvent.body[0]);
+            const container = getBlobContainerName(eventGridEvent);
             const isTest = container.includes('test');
 
             Configuration.set(isTest);
 
-            const blob = await getRecordsFromBlobStorage(eventGridEvent.body[0].data.url);
+            const blob = await getRecordsFromBlobStorage(eventGridEvent.data.url);
             const sanitizedRecords = sanitizeRecords(blob.itemRecords);
 
             if (blob.itemRecords.length === 0) {

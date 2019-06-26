@@ -1,20 +1,11 @@
 {
   "bindings": [
     {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
     }
   ],
+  "disabled": false,
   "scriptFile": "../dist/kcd-index-sync/index.js"
 }
