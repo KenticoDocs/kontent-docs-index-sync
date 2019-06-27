@@ -1,4 +1,13 @@
-export const sanitizeContent = (content: string): string => {
+import { IRecord } from '../external/models';
+
+export const sanitizeRecords = (records: IRecord[]): IRecord[] =>
+    records.map((record: IRecord) => ({
+        ...record,
+        content: sanitizeContent(record.content),
+        heading: sanitizeContent(record.heading),
+    }));
+
+const sanitizeContent = (content: string): string => {
     const contentWithoutIcons = removeIcons(content);
 
     return contentWithoutIcons
@@ -11,7 +20,7 @@ export const sanitizeContent = (content: string): string => {
 };
 
 const removeIcons = (content: string): string => {
-    const iconExtractor = new RegExp(`{@icon-[\\s\\S-]*?@}`, 'g');
+    const iconExtractor = /{@icon-[\s\S-]*?@}/g;
     const matches = content.match(iconExtractor);
 
     if (matches) {

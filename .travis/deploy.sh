@@ -9,7 +9,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.." \
 
 prepare_site_dir() {
     declare -r files=(
-        kcd-sanitize-content
+        kcd-index-sync
+        kcd-clear-index
         dist
         extensions.csproj
         host.json
