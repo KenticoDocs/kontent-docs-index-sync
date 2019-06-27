@@ -3,25 +3,32 @@ import {
     sanitizeRecords,
 } from './sanitizeRecords';
 
+const notModifiedContent = 'Hello this is standard text that shouldn\'t be modified';
+
 describe.each([
     [
         '&lt;&amp; {~some text~} after\n component{@icon-check@} {~ {@icon-calendar@}{@icon-copy@}' +
         ' {@icon-codename@}  &gt;{@icon-content-and-assets@} ~}       {@icon-light-bulb@}{@icon-cancel@}',
+        '&lt;&amp; {~some text~} after\n component{@icon-check@} {~ {@icon-calendar@}&nbsp;',
         '<& some text after component >',
+        '<& some text after component',
     ],
     [
-        'Hello this is standard text that shouldn\'t be modified',
-        'Hello this is standard text that shouldn\'t be modified',
+        notModifiedContent,
+        notModifiedContent,
+        notModifiedContent,
+        notModifiedContent,
     ],
     [
+        '',
+        '',
         '',
         '',
     ]])
-('sanitizeRecords', (content, expectedContent) => {
+('sanitizeRecords', (content, heading, expectedContent, expectedHeading) => {
     it('should replace icons and special characters', () => {
         const commonAttributes = {
             codename: 'codename',
-            heading: '',
             id: '1',
             objectID: '1',
             order: '2',
@@ -32,10 +39,12 @@ describe.each([
         const record: IRecord = {
             ...commonAttributes,
             content,
+            heading,
         };
         const expectedRecord: IRecord = {
             ...commonAttributes,
             content: expectedContent,
+            heading: expectedHeading,
         };
         const recordsToSanitize = [record];
         const expectedRecords = [expectedRecord];

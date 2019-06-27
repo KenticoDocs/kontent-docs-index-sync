@@ -4,6 +4,7 @@ export const sanitizeRecords = (records: IRecord[]): IRecord[] =>
     records.map((record: IRecord) => ({
         ...record,
         content: sanitizeContent(record.content),
+        heading: sanitizeContent(record.heading),
     }));
 
 const sanitizeContent = (content: string): string => {
