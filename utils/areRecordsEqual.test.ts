@@ -1,4 +1,4 @@
-import { IRecord } from '../external/models';
+import { IRecord } from 'cloud-docs-shared-code';
 import { areRecordsEqual } from './areRecordsEqual';
 
 describe('areRecordsEqual', () => {
@@ -12,6 +12,7 @@ describe('areRecordsEqual', () => {
         platforms: ['net'],
         section: 'section',
         title: 'title',
+        urlFragment: '/hello/world',
     };
 
     it.each([
@@ -209,6 +210,31 @@ describe('areRecordsEqual', () => {
             {
                 ...commonRecord,
                 order: order2 as string,
+            },
+        );
+
+        expect(areEqual).toBe(truthy);
+    });
+    it.each([
+        [
+            '/#operation/path',
+            '/#operation/path',
+            true,
+        ],
+        [
+            '/#operation/path',
+            '/#path/operation',
+            false,
+        ],
+    ])('returns correct result for order', (urlFragment1, urlFragment2, truthy) => {
+        const areEqual = areRecordsEqual(
+            {
+                ...commonRecord,
+                urlFragment: urlFragment1 as string,
+            },
+            {
+                ...commonRecord,
+                urlFragment: urlFragment2 as string,
             },
         );
 

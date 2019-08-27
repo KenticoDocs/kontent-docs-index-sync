@@ -4,10 +4,10 @@ import {
     SharedKeyCredential,
     StorageURL,
 } from '@azure/storage-blob';
+import { IItemRecordsBlob } from 'cloud-docs-shared-code';
 import { Configuration } from './configuration';
-import { IBlob } from './models';
 
-export const getRecordsFromBlobStorage = async (url: string): Promise<IBlob> => {
+export const getRecordsFromBlobStorage = async (url: string): Promise<IItemRecordsBlob> => {
     const {
         azureAccountName,
         azureStorageKey,

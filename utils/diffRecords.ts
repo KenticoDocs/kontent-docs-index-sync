@@ -1,4 +1,4 @@
-import { IRecord } from '../external/models';
+import { IRecord } from 'cloud-docs-shared-code';
 import { areRecordsEqual } from './areRecordsEqual';
 
 function filterEqualRecord(algoliaRecord: IRecord, matchingRecordByObjectId: IRecord, recordsToIndex: IRecord[]) {
