@@ -1,4 +1,4 @@
-import { IRecord } from '../external/models';
+import { IRecord } from 'cloud-docs-shared-code';
 
 export const areRecordsEqual = (record1: IRecord, record2: IRecord): boolean =>
     record1.id === record2.id &&
@@ -8,6 +8,7 @@ export const areRecordsEqual = (record1: IRecord, record2: IRecord): boolean =>
     record1.heading === record2.heading &&
     record1.section === record2.section &&
     record1.codename === record2.codename &&
+    record1.urlFragment === record2.urlFragment &&
     arePlatformsEqual(record1.platforms, record2.platforms);
 
 const arePlatformsEqual = (platforms1: string[] = [], platforms2: string[] = []) => {

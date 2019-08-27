@@ -1,12 +1,12 @@
 import { Task } from 'algoliasearch';
+import {
+    IItemRecordsBlob,
+    IRecord,
+} from 'cloud-docs-shared-code';
 import { diffRecords } from '../utils/diffRecords';
 import { getSearchIndex } from './getSearchIndex';
-import {
-    IBlob,
-    IRecord,
-} from './models';
 
-export const syncAlgoliaRecords = async (blob: IBlob, sanitizedRecords: IRecord[]) => {
+export const syncAlgoliaRecords = async (blob: IItemRecordsBlob, sanitizedRecords: IRecord[]) => {
     const recordsFromAlgolia = await getRecordsById(blob.id);
     const {
         recordsToDelete,
@@ -24,6 +24,7 @@ const getRecordsById = async (id: string): Promise<IRecord[]> => {
     const response = await getSearchIndex().search<IRecord>({
         distinct: 0,
         filters: `id:${id}`,
+        hitsPerPage: 1000,
     });
 
     return response.hits;
