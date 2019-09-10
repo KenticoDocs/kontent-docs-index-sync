@@ -1,7 +1,5 @@
 import { IRecord } from 'cloud-docs-shared-code';
-import {
-    sanitizeRecords,
-} from './sanitizeRecords';
+import { sanitizeRecords } from './sanitizeRecords';
 
 const notModifiedContent = 'Hello this is standard text that shouldn\'t be modified';
 

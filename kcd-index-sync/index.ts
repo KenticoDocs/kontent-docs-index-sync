@@ -2,9 +2,12 @@ import {
     AzureFunction,
     Context,
 } from '@azure/functions';
-import { Configuration } from '../external/configuration';
-import { getRecordsFromBlobStorage } from '../external/getRecordsFromBlobStorage';
-import { IEventGridEvent } from '../external/models';
+import {
+    Configuration,
+    getBlobFromStorage,
+    IBlobEventGridEvent,
+    IItemRecordsBlob,
+} from 'cloud-docs-shared-code';
 import {
     deleteRecordsByCodename,
     indexRecords,
@@ -14,14 +17,19 @@ import { getBlobContainerName } from '../utils/getBlobContainerName';
 import { sanitizeRecords } from '../utils/sanitizeRecords';
 
 export const eventGridTrigger: AzureFunction =
-    async (context: Context, eventGridEvent: IEventGridEvent): Promise<void> => {
+    async (context: Context, eventGridEvent: IBlobEventGridEvent): Promise<void> => {
         try {
             const container = getBlobContainerName(eventGridEvent);
             const isTest = container.includes('test');
 
             Configuration.set(isTest);
 
-            const blob = await getRecordsFromBlobStorage(eventGridEvent.data.url);
+            const blob = await getBlobFromStorage(
+                eventGridEvent.data.url,
+                Configuration.keys.azureAccountName,
+                Configuration.keys.azureStorageKey,
+            ) as IItemRecordsBlob;
+
             const sanitizedRecords = sanitizeRecords(blob.itemRecords);
 
             if (blob.itemRecords.length === 0) {

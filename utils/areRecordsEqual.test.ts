@@ -12,7 +12,6 @@ describe('areRecordsEqual', () => {
         platforms: ['net'],
         section: 'section',
         title: 'title',
-        urlFragment: '/hello/world',
     };
 
     it.each([
@@ -217,24 +216,24 @@ describe('areRecordsEqual', () => {
     });
     it.each([
         [
-            '/#operation/path',
-            '/#operation/path',
+            '07c7d3ed-4956-4fe9-bc68-7b82d17c5dda',
+            '07c7d3ed-4956-4fe9-bc68-7b82d17c5dda',
             true,
         ],
         [
-            '/#operation/path',
-            '/#path/operation',
+            '22aead0e-e4b2-44c8-bbb0-0488e4c5ebd7',
+            '9bb10e92-5961-446b-bae3-77b09becd55b',
             false,
         ],
-    ])('returns correct result for order', (urlFragment1, urlFragment2, truthy) => {
+    ])('returns correct result for objectID', (objectID1, objectID2, truthy) => {
         const areEqual = areRecordsEqual(
             {
                 ...commonRecord,
-                urlFragment: urlFragment1 as string,
+                objectID: objectID1 as string,
             },
             {
                 ...commonRecord,
-                urlFragment: urlFragment2 as string,
+                objectID: objectID2 as string,
             },
         );
 

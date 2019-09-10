@@ -49,8 +49,12 @@ export const deleteRecordsByCodename = async (codename: string): Promise<void> =
     });
 };
 
-export const clearIndex = async (section: string): Promise<void> => {
+export const clearIndex = async (section: string, id?: string): Promise<void> => {
+    const filters = id
+        ? `id:${id}`
+        : `section:${section}`;
+
     await getSearchIndex().deleteBy({
-        filters: `section:${section}`,
+        filters,
     });
 };
