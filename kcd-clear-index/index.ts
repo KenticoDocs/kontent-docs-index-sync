@@ -3,17 +3,15 @@ import {
     Context,
     HttpRequest,
 } from '@azure/functions'
-import { Configuration } from '../external/configuration';
+import { Configuration } from 'cloud-docs-shared-code';
 import { clearIndex } from '../external/searchIndex';
 
-const httpTrigger: AzureFunction = async (context: Context, req: HttpRequest): Promise<void> => {
+export const httpTrigger: AzureFunction = async (context: Context, req: HttpRequest): Promise<void> => {
     try {
         Configuration.set(req.query.isTest === 'enabled');
-        await clearIndex(req.query.section);
+        await clearIndex(req.query.section, req.query.id);
     } catch (error) {
         /** This try-catch is required for correct logging of exceptions in Azure */
         throw `Message: ${error.message} \nStack Trace: ${error.stack}`;
     }
 };
-
-export default httpTrigger;
