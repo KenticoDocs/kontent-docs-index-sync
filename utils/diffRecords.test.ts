@@ -1,4 +1,7 @@
-import { IRecord } from 'cloud-docs-shared-code';
+import {
+    IRecord,
+    Section,
+} from 'cloud-docs-shared-code';
 import { diffRecords } from './diffRecords';
 
 describe('diffRecords', () => {
@@ -11,7 +14,7 @@ describe('diffRecords', () => {
             objectID: 'article_3',
             order: '3',
             platforms: [],
-            section: 'tutorials',
+            section: Section.Tutorials,
             title: 'Hello',
         };
         const record2: IRecord = {
@@ -22,7 +25,7 @@ describe('diffRecords', () => {
             objectID: 'article_1',
             order: '1',
             platforms: [],
-            section: 'tutorials',
+            section: Section.Tutorials,
             title: 'Hello',
         };
         const recordInAlgolia = {
@@ -52,7 +55,7 @@ describe('diffRecords', () => {
             objectID: 'article_3',
             order: '3',
             platforms: [],
-            section: 'tutorials',
+            section: Section.Tutorials,
             title: 'Hello',
         };
         const record2: IRecord = {
@@ -63,7 +66,7 @@ describe('diffRecords', () => {
             objectID: 'article_2',
             order: '1',
             platforms: [],
-            section: 'tutorials',
+            section: Section.Tutorials,
             title: 'Hello',
         };
         const record3: IRecord = {
@@ -74,7 +77,7 @@ describe('diffRecords', () => {
             objectID: 'article_1',
             order: '1',
             platforms: [],
-            section: 'tutorials',
+            section: Section.Tutorials,
             title: 'Hello',
         };
         const recordsFromBlob = [
@@ -101,7 +104,7 @@ describe('diffRecords', () => {
             objectID: 'article_1',
             order: '1',
             platforms: [],
-            section: 'tutorials',
+            section: Section.Tutorials,
             title: 'Hello',
         };
         const record2: IRecord = {
@@ -112,7 +115,7 @@ describe('diffRecords', () => {
             objectID: 'article_2',
             order: '2',
             platforms: [],
-            section: 'tutorials',
+            section: Section.Tutorials,
             title: 'Hello',
         };
         const record3: IRecord = {
@@ -123,7 +126,7 @@ describe('diffRecords', () => {
             objectID: 'article_1',
             order: '1',
             platforms: [],
-            section: 'tutorials',
+            section: Section.Tutorials,
             title: 'Hello world!',
         };
         const recordsFromBlob = [

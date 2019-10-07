@@ -1,4 +1,7 @@
-import { IRecord } from 'cloud-docs-shared-code';
+import {
+    IRecord,
+    Section,
+} from 'cloud-docs-shared-code';
 import { areRecordsEqual } from './areRecordsEqual';
 
 describe('areRecordsEqual', () => {
@@ -10,7 +13,7 @@ describe('areRecordsEqual', () => {
         objectID: '3',
         order: 'order',
         platforms: ['net'],
-        section: 'section',
+        section: Section.Api,
         title: 'title',
     };
 
@@ -129,11 +132,11 @@ describe('areRecordsEqual', () => {
         const areEqual = areRecordsEqual(
             {
                 ...commonRecord,
-                section: section1 as string,
+                section: section1 as Section,
             },
             {
                 ...commonRecord,
-                section: section2 as string,
+                section: section2 as Section,
             },
         );
 
