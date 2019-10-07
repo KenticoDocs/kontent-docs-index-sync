@@ -15,7 +15,7 @@
   "dependencies": {
     "@azure/storage-blob": "10.3.0",
     "algoliasearch": "3.33.0",
-    "cloud-docs-shared-code": "3.2.6"
+    "cloud-docs-shared-code": "3.3.3"
   },
   "devDependencies": {
     "@azure/functions": "1.0.2-beta2",

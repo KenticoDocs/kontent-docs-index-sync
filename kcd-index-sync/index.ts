@@ -7,9 +7,12 @@ import {
     getBlobFromStorage,
     IBlobEventGridEvent,
     IItemRecordsBlob,
+    Operation,
+    Section,
 } from 'cloud-docs-shared-code';
 import {
     deleteRecordsByCodename,
+    deleteRecordsById,
     indexRecords,
     syncAlgoliaRecords,
 } from '../external/searchIndex';
@@ -30,17 +33,45 @@ export const eventGridTrigger: AzureFunction =
                 Configuration.keys.azureStorageKey,
             ) as IItemRecordsBlob;
 
-            const sanitizedRecords = sanitizeRecords(blob.itemRecords);
-
-            if (blob.itemRecords.length === 0) {
-                await deleteRecordsByCodename(blob.codename);
-            } else if (blob.initialize) {
-                await indexRecords(sanitizedRecords);
-            } else {
-                await syncAlgoliaRecords(blob, sanitizedRecords);
-            }
+            await updateIndex(blob);
         } catch (error) {
             /** This try-catch is required for correct logging of exceptions in Azure */
             throw `Message: ${error.message} \nStack Trace: ${error.stack}`;
         }
     };
+
+const updateIndex = async (blob: IItemRecordsBlob): Promise<void> => {
+    const sanitizedRecords = sanitizeRecords(blob.itemRecords);
+
+    switch (blob.operation) {
+        case Operation.Initialize:
+            await indexRecords(sanitizedRecords);
+            break;
+
+        case Operation.Update:
+            await syncAlgoliaRecords(blob, sanitizedRecords);
+            break;
+
+        case Operation.Delete:
+            await deleteRecords(blob);
+            break;
+
+        default:
+            throw Error('Unsupported operation!');
+    }
+};
+
+const deleteRecords = async (blob: IItemRecordsBlob): Promise<void> => {
+    switch (blob.section) {
+        case Section.Api:
+            await deleteRecordsById(blob.id);
+            break;
+
+        case Section.Tutorials:
+            await deleteRecordsByCodename(blob.codename);
+            break;
+
+        default:
+            throw Error('Unknown section!');
+    }
+};
