@@ -1,4 +1,7 @@
-import { IRecord } from '../external/models';
+import {
+    IRecord,
+    Section,
+} from 'cloud-docs-shared-code';
 import { areRecordsEqual } from './areRecordsEqual';
 
 describe('areRecordsEqual', () => {
@@ -10,7 +13,7 @@ describe('areRecordsEqual', () => {
         objectID: '3',
         order: 'order',
         platforms: ['net'],
-        section: 'section',
+        section: Section.Api,
         title: 'title',
     };
 
@@ -129,11 +132,11 @@ describe('areRecordsEqual', () => {
         const areEqual = areRecordsEqual(
             {
                 ...commonRecord,
-                section: section1 as string,
+                section: section1 as Section,
             },
             {
                 ...commonRecord,
-                section: section2 as string,
+                section: section2 as Section,
             },
         );
 
@@ -209,6 +212,31 @@ describe('areRecordsEqual', () => {
             {
                 ...commonRecord,
                 order: order2 as string,
+            },
+        );
+
+        expect(areEqual).toBe(truthy);
+    });
+    it.each([
+        [
+            '07c7d3ed-4956-4fe9-bc68-7b82d17c5dda',
+            '07c7d3ed-4956-4fe9-bc68-7b82d17c5dda',
+            true,
+        ],
+        [
+            '22aead0e-e4b2-44c8-bbb0-0488e4c5ebd7',
+            '9bb10e92-5961-446b-bae3-77b09becd55b',
+            false,
+        ],
+    ])('returns correct result for objectID', (objectID1, objectID2, truthy) => {
+        const areEqual = areRecordsEqual(
+            {
+                ...commonRecord,
+                objectID: objectID1 as string,
+            },
+            {
+                ...commonRecord,
+                objectID: objectID2 as string,
             },
         );
 

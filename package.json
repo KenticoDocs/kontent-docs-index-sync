@@ -13,17 +13,18 @@
     "tslint": "tslint --project tsconfig.json"
   },
   "dependencies": {
-    "@azure/storage-blob": "^10.3.0",
-    "algoliasearch": "^3.33.0"
+    "@azure/storage-blob": "10.3.0",
+    "algoliasearch": "3.33.0",
+    "cloud-docs-shared-code": "3.3.3"
   },
   "devDependencies": {
-    "@azure/functions": "^1.0.2-beta2",
-    "@types/algoliasearch": "^3.30.12",
-    "@types/jest": "^24.0.13",
-    "@types/node": "^12.0.5",
-    "jest": "^24.8.0",
-    "ts-jest": "^24.0.2",
+    "@azure/functions": "1.0.2-beta2",
+    "@types/algoliasearch": "3.30.12",
+    "@types/jest": "24.0.13",
+    "@types/node": "12.0.5",
+    "jest": "24.8.0",
+    "ts-jest": "24.0.2",
     "tslint": "5.13",
-    "typescript": "^3.3.3"
+    "typescript": "3.3.3"
   }
 }

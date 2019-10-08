@@ -1,4 +1,4 @@
-import { IRecord } from '../external/models';
+import { IRecord } from 'cloud-docs-shared-code';
 
 export const sanitizeRecords = (records: IRecord[]): IRecord[] =>
     records.map((record: IRecord) => ({

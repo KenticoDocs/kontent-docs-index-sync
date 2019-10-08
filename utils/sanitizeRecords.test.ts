@@ -1,7 +1,8 @@
-import { IRecord } from '../external/models';
 import {
-    sanitizeRecords,
-} from './sanitizeRecords';
+    IRecord,
+    Section,
+} from 'cloud-docs-shared-code';
+import { sanitizeRecords } from './sanitizeRecords';
 
 const notModifiedContent = 'Hello this is standard text that shouldn\'t be modified';
 
@@ -33,7 +34,7 @@ describe.each([
             objectID: '1',
             order: '2',
             platforms: [],
-            section: 'api_reference',
+            section: Section.Api,
             title: 'Title',
         };
         const record: IRecord = {

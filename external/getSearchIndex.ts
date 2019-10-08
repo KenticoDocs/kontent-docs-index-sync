@@ -3,7 +3,7 @@ import {
     Index,
 } from 'algoliasearch';
 import * as algoliasearch from 'algoliasearch';
-import { Configuration } from './configuration';
+import { Configuration } from 'cloud-docs-shared-code';
 
 export const getSearchIndex = (): Index =>
     getSearchClient().initIndex(Configuration.keys.searchIndexName);
