@@ -50,9 +50,11 @@ export const deleteRecordsByCodename = async (codename: string): Promise<void> =
 };
 
 export const deleteRecordsById = async (id: string): Promise<void> => {
-    await getSearchIndex().deleteBy({
-        filters: `id:${id}`,
-    })
+    if (id) {
+        await getSearchIndex().deleteBy({
+            filters: `id:${id}`,
+        })
+    }
 };
 
 export const clearIndex = async (section: string, id?: string): Promise<void> => {
