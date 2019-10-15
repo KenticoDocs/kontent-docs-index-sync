@@ -1,4 +1,4 @@
-import { IRecord } from 'cloud-docs-shared-code';
+import { IRecord } from 'kontent-docs-shared-code';
 
 export const areRecordsEqual = (record1: IRecord, record2: IRecord): boolean =>
     record1.id === record2.id &&

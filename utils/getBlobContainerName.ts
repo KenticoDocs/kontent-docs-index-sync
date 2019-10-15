@@ -1,4 +1,4 @@
-import { IBlobEventGridEvent } from 'cloud-docs-shared-code';
+import { IBlobEventGridEvent } from 'kontent-docs-shared-code';
 
 export const getBlobContainerName = (eventGridEvent: IBlobEventGridEvent): string => {
     const containerNameRegex = /containers\/([\w|-]*)/;

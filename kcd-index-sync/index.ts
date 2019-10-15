@@ -9,7 +9,7 @@ import {
     IItemRecordsBlob,
     Operation,
     Section,
-} from 'cloud-docs-shared-code';
+} from 'kontent-docs-shared-code';
 import {
     deleteRecordsByCodename,
     deleteRecordsById,

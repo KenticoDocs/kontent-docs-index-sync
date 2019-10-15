@@ -1,12 +1,12 @@
-| [master](https://github.com/Kentico/kentico-cloud-docs-search/tree/master) | [develop](https://github.com/Kentico/kentico-cloud-docs-search/tree/develop) |
+| [master](https://github.com/KenticoDocs/kontent-docs-index-sync/tree/master) | [develop](https://github.com/KenticoDocs/kontent-docs-index-sync/tree/develop) |
 |:---:|:---:|
-| [![Build Status](https://travis-ci.com/KenticoDocs/cloud-docs-index-sync.svg?branch=master)](https://travis-ci.com/KenticoDocs/cloud-docs-index-sync/branches) [![codebeat badge](https://codebeat.co/badges/12ac26ae-0819-4a03-b8b6-894a1b24fe71)](https://codebeat.co/projects/github-com-kenticodocs-cloud-docs-index-sync-master) | [![Build Status](https://travis-ci.com/KenticoDocs/cloud-docs-index-sync.svg?branch=develop)](https://travis-ci.com/KenticoDocs/cloud-docs-index-sync/branches) [![codebeat badge](https://codebeat.co/badges/e9135692-0025-4147-9718-8bf9fcfe7e49)](https://codebeat.co/projects/github-com-kenticodocs-cloud-docs-index-sync-develop) |
+| [![Build Status](https://travis-ci.com/KenticoDocs/kontent-docs-index-sync.svg?branch=master)](https://travis-ci.com/KenticoDocs/kontent-docs-index-sync/branches) [![codebeat badge](https://codebeat.co/badges/22a5efee-1d1a-494f-a485-986a5d92fe94)](https://codebeat.co/projects/github-com-kenticodocs-kontent-docs-index-sync-master) | [![Build Status](https://travis-ci.com/KenticoDocs/kontent-docs-index-sync.svg?branch=develop)](https://travis-ci.com/KenticoDocs/kontent-docs-index-sync/branches) [![codebeat badge](https://codebeat.co/badges/279abd8a-2d9c-4f4e-b939-1a8a129dab15)](https://codebeat.co/projects/github-com-kenticodocs-kontent-docs-index-sync-develop) |
 
-# Kentico Cloud Documentation - Index sync
+# Kentico Kontent Documentation - Index sync
 
-Backend service for [Kentico Cloud](https://docs.kenticocloud.com/)  documentation portal, which utilizes Kentico Cloud as a source of its content.
+Backend service for [Kentico Kontent](https://docs.kontent.ai/) documentation portal, which utilizes Kentico Kontent as a source of its data.
 
-The service is responsible for receiving split items from Kentico Cloud to records and storing them in the [Algolia](https://www.algolia.com/) index. The service is triggered when a blob is stored in the blob storage by the [Tutorials search](https://github.com/KenticoDocs/cloud-docs-tutorial-search) service.
+The service is responsible for receiving split items from Kentico Kontent to records and storing them in the [Algolia](https://www.algolia.com/) index. The service is triggered when a blob is stored in the blob storage by the [Tutorials Search](https://github.com/KenticoDocs/kontent-docs-tutorial-search) service.
 
 ## Overview
 
@@ -14,7 +14,7 @@ The service is responsible for receiving split items from Kentico Cloud to recor
 
 2. It is subscribed to an Azure Event Grid topic of the Blob storage, which creates an event when a blob is created. Each event contains the url of the blob that was created.
 
-3. The Index sync service fetches the blob, sanitizes the content of the records and stores them in the Algolia index.
+3. The Index Sync service fetches the blob, sanitizes the content of the records and stores them in the Algolia index.
 
 ## Setup
 
