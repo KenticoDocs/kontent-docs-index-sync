@@ -2,7 +2,7 @@ import { Task } from 'algoliasearch';
 import {
     IItemRecordsBlob,
     IRecord,
-} from 'cloud-docs-shared-code';
+} from 'kontent-docs-shared-code';
 import { diffRecords } from '../utils/diffRecords';
 import { getSearchIndex } from './getSearchIndex';
 

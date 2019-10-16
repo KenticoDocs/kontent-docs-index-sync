@@ -3,7 +3,7 @@ import {
     Context,
     HttpRequest,
 } from '@azure/functions'
-import { Configuration } from 'cloud-docs-shared-code';
+import { Configuration } from 'kontent-docs-shared-code';
 import { clearIndex } from '../external/searchIndex';
 
 export const httpTrigger: AzureFunction = async (context: Context, req: HttpRequest): Promise<void> => {

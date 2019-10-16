@@ -1,7 +1,7 @@
 import {
     IRecord,
     Section,
-} from 'cloud-docs-shared-code';
+} from 'kontent-docs-shared-code';
 import { areRecordsEqual } from './areRecordsEqual';
 
 describe('areRecordsEqual', () => {
