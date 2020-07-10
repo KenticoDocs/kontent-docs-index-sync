@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=xx;AccountKey=xx",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "Search.IndexName": "",
+    "Search.AppId": "",
+    "Search.ApiKey": "",
+    "Azure.StorageKey": "",
+    "Search.IndexName.Test": "",
+    "Search.AppId.Test": ""
+  }
+}
