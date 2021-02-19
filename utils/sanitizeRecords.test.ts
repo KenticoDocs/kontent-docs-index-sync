@@ -41,11 +41,13 @@ describe.each([
             ...commonAttributes,
             content,
             heading,
+            isCodeSample: false
         };
         const expectedRecord: IRecord = {
             ...commonAttributes,
             content: expectedContent,
             heading: expectedHeading,
+            isCodeSample: false
         };
         const recordsToSanitize = [record];
         const expectedRecords = [expectedRecord];

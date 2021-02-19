@@ -24,16 +24,22 @@ export const eventGridTrigger: AzureFunction =
         try {
             const container = getBlobContainerName(eventGridEvent);
             const isTest = container.includes('test');
+            const url = eventGridEvent.data.url;
 
             Configuration.set(isTest);
 
             const blob = await getBlobFromStorage(
-                eventGridEvent.data.url,
+                url,
                 Configuration.keys.azureAccountName,
                 Configuration.keys.azureStorageKey,
             ) as IItemRecordsBlob;
 
             await updateIndex(blob);
+
+            context.res = {
+                status: 200,
+                body: `Finished processing blob '${url}'`,
+            };
         } catch (error) {
             /** This try-catch is required for correct logging of exceptions in Azure */
             throw `Message: ${error.message} \nStack Trace: ${error.stack}`;

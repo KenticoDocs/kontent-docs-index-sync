@@ -1,8 +1,9 @@
-import { Task } from 'algoliasearch';
 import {
     IItemRecordsBlob,
     IRecord,
+
 } from 'kontent-docs-shared-code';
+import {ChunkedBatchResponse } from '@algolia/client-search';
 import { diffRecords } from '../utils/diffRecords';
 import { getSearchIndex } from './getSearchIndex';
 
@@ -21,7 +22,8 @@ export const syncAlgoliaRecords = async (blob: IItemRecordsBlob, sanitizedRecord
 };
 
 const getRecordsById = async (id: string): Promise<IRecord[]> => {
-    const response = await getSearchIndex().search<IRecord>({
+    // empty query is used to fetch all records
+    const response = await getSearchIndex().search<IRecord>('', {
         distinct: 0,
         filters: `id:${id}`,
         hitsPerPage: 1000,
@@ -40,8 +42,8 @@ const deleteRecordsByObjectId = async (objectIds: string[]): Promise<void> => {
     });
 };
 
-export const indexRecords = async (records: IRecord[]): Promise<Task> =>
-    await getSearchIndex().saveObjects(records);
+export const indexRecords = async (records: IRecord[]): Promise<ChunkedBatchResponse> =>
+  await getSearchIndex().saveObjects(records);
 
 export const deleteRecordsByCodename = async (codename: string): Promise<void> => {
     await getSearchIndex().deleteBy({

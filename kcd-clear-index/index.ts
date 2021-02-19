@@ -8,8 +8,27 @@ import { clearIndex } from '../external/searchIndex';
 
 export const httpTrigger: AzureFunction = async (context: Context, req: HttpRequest): Promise<void> => {
     try {
-        Configuration.set(req.query.isTest === 'enabled');
-        await clearIndex(req.query.section, req.query.id);
+        const isTest = req.query.isTest === 'enabled';
+
+        Configuration.set(isTest);
+
+        const section = req.query && req.query.section;
+        const id =  req.query.id;
+
+        if (section) {
+            await clearIndex(section, id);
+            context.res = {
+                status: 200,
+                body: `Test: ${isTest}. Cleared index section '${section}' and id '${id}'`,
+            };
+            return;
+        }
+
+        context.res = {
+            status: 200,
+            body: `Test: ${isTest}. No section was specified, therefore no index was cleared.`,
+        };
+
     } catch (error) {
         /** This try-catch is required for correct logging of exceptions in Azure */
         throw `Message: ${error.message} \nStack Trace: ${error.stack}`;

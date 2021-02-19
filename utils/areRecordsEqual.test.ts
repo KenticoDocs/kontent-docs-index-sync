@@ -15,6 +15,7 @@ describe('areRecordsEqual', () => {
         platforms: ['net'],
         section: Section.Api,
         title: 'title',
+        isCodeSample: false
     };
 
     it.each([

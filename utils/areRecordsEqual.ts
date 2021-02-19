@@ -9,6 +9,7 @@ export const areRecordsEqual = (record1: IRecord, record2: IRecord): boolean =>
     record1.section === record2.section &&
     record1.codename === record2.codename &&
     record1.objectID === record2.objectID &&
+    record1.isCodeSample === record2.isCodeSample &&
     arePlatformsEqual(record1.platforms, record2.platforms);
 
 const arePlatformsEqual = (platforms1: string[] = [], platforms2: string[] = []) => {

@@ -16,6 +16,7 @@ describe('diffRecords', () => {
             platforms: [],
             section: Section.Tutorials,
             title: 'Hello',
+            isCodeSample: false
         };
         const record2: IRecord = {
             codename: 'article',
@@ -27,6 +28,7 @@ describe('diffRecords', () => {
             platforms: [],
             section: Section.Tutorials,
             title: 'Hello',
+            isCodeSample: false
         };
         const recordInAlgolia = {
             ...record,
@@ -57,6 +59,7 @@ describe('diffRecords', () => {
             platforms: [],
             section: Section.Tutorials,
             title: 'Hello',
+            isCodeSample: false
         };
         const record2: IRecord = {
             codename: 'article',
@@ -68,6 +71,7 @@ describe('diffRecords', () => {
             platforms: [],
             section: Section.Tutorials,
             title: 'Hello',
+            isCodeSample: false
         };
         const record3: IRecord = {
             codename: 'article',
@@ -79,6 +83,7 @@ describe('diffRecords', () => {
             platforms: [],
             section: Section.Tutorials,
             title: 'Hello',
+            isCodeSample: false
         };
         const recordsFromBlob = [
             record,
@@ -106,6 +111,7 @@ describe('diffRecords', () => {
             platforms: [],
             section: Section.Tutorials,
             title: 'Hello',
+            isCodeSample: false
         };
         const record2: IRecord = {
             codename: 'article',
@@ -117,6 +123,7 @@ describe('diffRecords', () => {
             platforms: [],
             section: Section.Tutorials,
             title: 'Hello',
+            isCodeSample: false
         };
         const record3: IRecord = {
             codename: 'article',
@@ -128,6 +135,7 @@ describe('diffRecords', () => {
             platforms: [],
             section: Section.Tutorials,
             title: 'Hello world!',
+            isCodeSample: false
         };
         const recordsFromBlob = [
             record,
